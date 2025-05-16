@@ -81,13 +81,59 @@ src/
 
 ### Authentication Endpoints
 - POST `/api/auth/register` - Register a new user
+   ```
+   {
+      "name": "strings",
+      "username": "strings",
+      "password": "strings",
+      "role_id": 1
+   }
+   ```
+   there are some type of role, 1 for admin (1 till 6) 
 - POST `/api/auth/login` - User login
+   ```
+   {
+      "username": "strings",
+      "password": "strings",
+   }
+   ```
 
 ### Doctor Schedule Endpoints
 All endpoints require JWT Authentication header: `Authorization: Bearer <token>`
 
+*Admin only can access this endpoint
+
 - GET `/api/doctor_schedule` - Get all doctor schedules
 - POST `/api/doctor_schedule` - Create new doctor schedule
-
+example body 
+   ```
+   {
+   "doctor_id": "ce5afe21-2e9f-4d9f-93f9-54a0292536a8",
+   "date_range": ["2025-01-01", "2025-06-30"],
+   "schedule": [
+      {
+         "day": "senin",
+         "time_start": "08:00",
+         "time_finish": "12:00",
+         "quota": 10,
+         "status": true
+      },
+      {
+         "day": "rabu",
+         "time_start": "13:00",
+         "time_finish": "15:00",
+         "quota": 8,
+         "status": true
+      },
+      {
+         "day": "jumat",
+         "time_start": "09:00",
+         "time_finish": "11:00",
+         "quota": 5,
+         "status": false
+      }
+    ]
+   }
+   ```
 ### API Documentation UI 
 - Access Swagger UI at Broser `http://localhost:8080/api/api-docs`
