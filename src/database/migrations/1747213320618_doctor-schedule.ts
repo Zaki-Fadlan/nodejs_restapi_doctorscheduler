@@ -49,5 +49,5 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
 }
 
 export async function down(pgm: MigrationBuilder): Promise<void> {
-  pgm.dropTable("doctor_schedule", { ifExists: true, cascade: true });
+  pgm.dropTable("doctor_schedules", { ifExists: true, cascade: true });
 }

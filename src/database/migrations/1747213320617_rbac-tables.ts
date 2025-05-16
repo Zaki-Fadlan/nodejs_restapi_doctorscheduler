@@ -124,10 +124,10 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
 
 export async function down(pgm: MigrationBuilder): Promise<void> {
   // Remove role_id from users first
-  pgm.dropColumns("users", ["role_id"]);
+  pgm.dropColumns("users", ["role_id"], { ifExists: true, cascade: true });
 
   // Drop tables in reverse order
-  pgm.dropTable("role_permissions");
-  pgm.dropTable("permissions");
-  pgm.dropTable("roles");
+  pgm.dropTable("role_permissions", { ifExists: true, cascade: true });
+  pgm.dropTable("permissions", { ifExists: true, cascade: true });
+  pgm.dropTable("roles", { ifExists: true, cascade: true });
 }
